@@ -67,11 +67,11 @@ func (m *Messanger) SendMessage(message, topic string) {
 	if topic != "" {
 		for _, subriber := range m.Subcriptions {
 			if topic == subriber.Topic {
-				subriber.Subcriber.con.WriteJSON(`{"topic": ` + topic + `, "message": "` + message + `"}`)
+				subriber.Subcriber.con.WriteJSON(`{"topic": "` + topic + `", "message": "` + message + `"}`)
 			}
 		}
 	}
 	for _, subriber := range m.Subcribers {
-		subriber.con.WriteJSON(`{"topic": ` + topic + `, "message": "` + message + `"}`)
+		subriber.con.WriteJSON(`{"topic": "` + topic + `", "message": "` + message + `"}`)
 	}
 }
